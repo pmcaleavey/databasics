@@ -70,7 +70,19 @@ module Databasics
 
 #Add a method to display the items a user has ordered in the past and the number ordered.
   def order_history
-    puts
+    puts "Enter the first and last name of the person you like to know the order history for?"
+    puts "What is the first name"
+    first_name = gets.chomp
+
+    puts "What is the last name"
+    last_name = gets.chomp
+
+    user = User.find_by(first_name: first_name, last_name: last_name)
+    binding.pry
+
+
+
+
   end
 
 #Add a method to prompt a user for an item name and quantity and create a new order.
@@ -93,5 +105,6 @@ app = Databasics::App.new
 
 #app.add_user
 #app.display_address
+app.order_history
 
 binding.pry
