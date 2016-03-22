@@ -10,6 +10,9 @@ db_config = YAML.load(File.open("config/database.yml"))
 ActiveRecord::Base.establish_connection(db_config)
 
 module Databasics
+  class App
+
+  end
   # Your code goes here...
 
   ## 3 ActiveRecord querying methods
@@ -17,3 +20,7 @@ module Databasics
   # 2) Model.find
   # 3) Model.find_by
 end
+
+app = Databasics::App.new
+
+binding.pry
