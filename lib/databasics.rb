@@ -26,17 +26,51 @@ module Databasics
     puts "Enter your email."
     email = gets.chomp
 
-    User.create(first_name: first_name, last_name: last_name, email: email)
+    user = User.create(first_name: first_name, last_name: last_name, email: email)
+    #user_id = User.user_id
+    puts "Your user id is #{user.id}."
+    puts
   end
 
 #Add a method to display a user's current addresses.
   def display_address
+    puts "To get an address, enter a first and last name"
+    puts "What is the first name"
+    first_name = gets.chomp
+
+    puts "What is the last name"
+    last_name = gets.chomp
+
+    user = User.where(first_name: first_name, last_name: last_name)
+
+    address = Address.where(user_id: user.id)
+
+    puts "#{address.street}"
+
+    # addresses.each do |x|
+    #   puts "x.#{street}"
+    #   # puts x.city
+    #   # puts x.state
+    #   # puts x.zip
+    # end
+
+    # addresses.each do |x|
+    #   street = x["street"]
+    #   city = x["city"]
+    #   state = x["state"]
+    #   zip = x["zip"]
+    #   binding.pry
+    # end
+
+    # clients.each do |client|
+    #   puts client.address.postcode
+    # end
 
   end
 
 #Add a method to display the items a user has ordered in the past and the number ordered.
-  def items_ordered
-
+  def order_history
+    puts
   end
 
 #Add a method to prompt a user for an item name and quantity and create a new order.
@@ -57,6 +91,7 @@ end
 
 app = Databasics::App.new
 
-app.add_user
+#app.add_user
+#app.display_address
 
 binding.pry
